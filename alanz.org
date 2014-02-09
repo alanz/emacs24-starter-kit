@@ -9,6 +9,13 @@ blah
 #+begin_src emacs-lisp
 ;;
 
+;; smex
+(starter-kit-install-if-needed 'smex)
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+
+
 ;; Window number mode
 (starter-kit-install-if-needed 'window-number)
 (require 'window-number)
@@ -36,6 +43,9 @@ blah
 
 (display-time)
 (set-variable (quote display-time-24hr-format) t)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 #+end_src
 
