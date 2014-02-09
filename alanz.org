@@ -1,0 +1,41 @@
+#+TITLE: alanz personal settings
+* alanz personal settings
+
+My personal settings
+
+** Startup stuff
+blah
+
+#+begin_src emacs-lisp
+;;
+
+;; Window number mode
+(starter-kit-install-if-needed 'window-number)
+(require 'window-number)
+(window-number-mode)
+(window-number-meta-mode)
+
+(starter-kit-install-if-needed 'haskell-mode)
+(starter-kit-install-if-needed 'ghc)
+(starter-kit-install-if-needed 'flymake-haskell-multi)
+(autoload 'ghc-init "ghc" nil t)
+
+(add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
+
+(defun alanz-haskell-hook ()
+
+  ;(lambda nil (ghc-init) (flymake-mode))
+  (ghc-init)
+  (flymake-mode)
+  ;(hare-init)
+)
+(add-hook 'haskell-mode-hook 'alanz-haskell-hook)
+
+
+(starter-kit-load "haskell")
+
+(display-time)
+(set-variable (quote display-time-24hr-format) t)
+
+#+end_src
+
