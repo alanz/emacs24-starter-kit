@@ -9,6 +9,8 @@ blah
 #+begin_src emacs-lisp
 ;;
 
+(starter-kit-install-if-needed 'erlang)
+
 ;; org
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")
