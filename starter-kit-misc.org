@@ -74,15 +74,25 @@ evaluated a theme is activated using the =load-theme= function.
 
 ** ido mode
 ido-mode is like magic pixie dust!
+  See http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 #+srcname: starter-kit-loves-ido-mode
 #+begin_src emacs-lisp 
 (when (> emacs-major-version 21)
   (ido-mode t)
+  (starter-kit-install-if-needed 'ido-ubiquitous)
+  (ido-ubiquitous-mode)
   (setq ido-enable-prefix nil
         ido-enable-flex-matching t
+        ido-auto-merge-work-directories-length nil
         ido-create-new-buffer 'always
-        ido-use-filename-at-point t
-        ido-max-prospects 10))
+        ido-use-filename-at-point 'guess
+        ;ido-use-filename-at-point t
+        ido-use-virtual-buffers t
+        ido-handle-duplicate-virtual-buffers 2
+        ido-max-prospects 10
+        ido-everywhere t
+        ;ido-file-extensions-order '(".org" ".txt" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf")
+))
 #+end_src
 
 ** Other, spell checking, tabs, imenu and a coding hook
