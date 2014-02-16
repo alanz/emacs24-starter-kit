@@ -10,6 +10,7 @@ blah
 ;;
 
 (starter-kit-install-if-needed 'erlang)
+(starter-kit-install-if-needed 'highlight-current-line)
 
 ;; org
 (starter-kit-install-if-needed 'org)
@@ -21,12 +22,40 @@ blah
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+;; finding
+(starter-kit-install-if-needed `find-file-in-project)
+(global-set-key (kbd "C-x f") 'find-file-in-project)
+
 
 ;; Window number mode
 (starter-kit-install-if-needed 'window-number)
 (require 'window-number)
 (window-number-mode)
 (window-number-meta-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GHC compiler
+;; See https://ghc.haskell.org/trac/ghc/wiki/Emacs
+
+(setq ghc-location "~/mysrc/github/ghc/ghc") ;; change as necessary
+
+;; search withing GHC compiler code
+(defun rgrep-ghc (regexp)
+  (interactive (list (progn (grep-compute-defaults) (grep-read-regexp))))
+  (rgrep regexp "*hs" (concat ghc-location "/compiler/")))
+(global-set-key (kbd "M-c") 'rgrep-ghc)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Haskell Refactorer
+(add-to-list 'load-path
+    "~/.cabal/share/HaRe-0.7.1.3/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.3/elisp")
+(require 'hare)
+(autoload 'hare-init "hare" nil t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (starter-kit-install-if-needed 'haskell-mode)
 (starter-kit-install-if-needed 'ghc)
@@ -76,7 +105,8 @@ blah
   (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
 
   ;; Jump to the definition of the current symbol.
-  (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+  ;; No, prefer the built in one, and use ghci :etags command
+  ;(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
   ;; Indent the below lines on columns after the current column.
   (define-key haskell-mode-map (kbd "C-<right>")
@@ -88,6 +118,8 @@ blah
     (lambda ()
       (interactive)
       (haskell-move-nested -1)))
+
+
 )
 (add-hook 'haskell-mode-hook 'alanz-haskell-hook)
 
@@ -102,13 +134,15 @@ blah
 
 
 
-(starter-kit-load "haskell")
+;(starter-kit-load "haskell")
 
 (display-time)
 (set-variable (quote display-time-24hr-format) t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(global-whitespace-mode t)
+(column-number-mode t)
 
 ;; from the starter-kit-2.0.3 package ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
