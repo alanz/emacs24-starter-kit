@@ -33,6 +33,11 @@ blah
 (window-number-mode)
 (window-number-meta-mode)
 
+;; Remember position in file when re-opening
+(require 'saveplace)
+(setq save-place-file "~/.emacs.d/saved-places")
+(setq-default save-place t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GHC compiler
 ;; See https://ghc.haskell.org/trac/ghc/wiki/Emacs
