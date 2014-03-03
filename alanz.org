@@ -12,6 +12,8 @@ blah
 (starter-kit-install-if-needed 'erlang)
 (starter-kit-install-if-needed 'highlight-current-line)
 
+(starter-kit-install-if-needed 'dockerfile-mode)
+
 ;; org
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")

@@ -53,3 +53,4 @@ secret.org
 agent/*
 /.smex-items
 /alanz.el.1
+/saved-places
