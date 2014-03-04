@@ -4,7 +4,7 @@
 ## misc
 loaddefs.el*
 auto-save-list
-custom.el
+#custom.el
 places
 .svn
 .DS_Store
