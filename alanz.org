@@ -13,6 +13,10 @@ blah
 (starter-kit-install-if-needed 'highlight-current-line)
 
 (starter-kit-install-if-needed 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+(starter-kit-install-if-needed 'markdown-mode)
 
 ;; org
 (starter-kit-install-if-needed 'org)
