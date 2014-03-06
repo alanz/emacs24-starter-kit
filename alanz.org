@@ -59,6 +59,10 @@ blah
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Refactorer
 (add-to-list 'load-path
+    "~/.cabal/share/HaRe-0.7.1.2/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.2/elisp")
+(add-to-list 'load-path
     "~/.cabal/share/HaRe-0.7.1.3/elisp")
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.3/elisp")
