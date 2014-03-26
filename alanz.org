@@ -27,6 +27,9 @@ blah
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")
 
+;; yaml
+(starter-kit-install-if-needed 'yaml-mode)
+
 ;; smex
 (starter-kit-install-if-needed 'smex)
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -71,6 +74,10 @@ blah
     "~/.cabal/share/HaRe-0.7.1.3/elisp")
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.3/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/HaRe-0.7.2.0/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.0/elisp")
 (require 'hare)
 (autoload 'hare-init "hare" nil t)
 
