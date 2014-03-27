@@ -30,6 +30,10 @@ blah
 ;; yaml
 (starter-kit-install-if-needed 'yaml-mode)
 
+;; php
+(starter-kit-install-if-needed 'php-mode)
+(starter-kit-install-if-needed 'flymake-php)
+
 ;; smex
 (starter-kit-install-if-needed 'smex)
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
