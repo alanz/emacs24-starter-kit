@@ -99,7 +99,8 @@ blah
 
   ;(lambda nil (ghc-init) (flymake-mode))
   (ghc-init)
-  (flymake-mode)
+  ;; No longer required for ghc-mod >= 4.0
+  ;; (flymake-mode)
   (hare-init)
 
   ;; Use simple indentation.
