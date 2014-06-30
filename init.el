@@ -27,3 +27,6 @@
     (org-babel-load-file (expand-file-name "starter-kit.org" starter-kit-dir))))
 
 ;;; init.el ends here
+
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))

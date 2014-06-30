@@ -44,6 +44,9 @@ blah
 (starter-kit-install-if-needed `find-file-in-project)
 (global-set-key (kbd "C-x f") 'find-file-in-project)
 
+;; projectile
+(starter-kit-install-if-needed 'projectile)
+(projectile-global-mode)
 
 ;; Window number mode
 (starter-kit-install-if-needed 'window-number)
@@ -75,9 +78,9 @@ blah
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.2/elisp")
 (add-to-list 'load-path
-    "~/.cabal/share/HaRe-0.7.1.3/elisp")
+    "~/.cabal/share/HaRe-0.7.2.3/elisp")
 (add-to-list 'load-path
-    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.3/elisp")
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.3/elisp")
 (add-to-list 'load-path
     "~/.cabal/share/HaRe-0.7.2.0/elisp")
 (add-to-list 'load-path
@@ -86,11 +89,15 @@ blah
 (autoload 'hare-init "hare" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ghc-mod debugging
+(setq ghc-debug t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (starter-kit-install-if-needed 'haskell-mode)
 (starter-kit-install-if-needed 'ghc)
-(starter-kit-install-if-needed 'flymake-haskell-multi)
+;(starter-kit-install-if-needed 'flymake-haskell-multi)
 (autoload 'ghc-init "ghc" nil t)
 
 (add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
@@ -99,8 +106,10 @@ blah
 
   ;(lambda nil (ghc-init) (flymake-mode))
   (ghc-init)
+
   ;; No longer required for ghc-mod >= 4.0
   ;; (flymake-mode)
+
   (hare-init)
 
   ;; Use simple indentation.
