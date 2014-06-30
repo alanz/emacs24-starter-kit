@@ -47,6 +47,10 @@ blah
 ;; projectile
 (starter-kit-install-if-needed 'projectile)
 (projectile-global-mode)
+(setq projectile-enable-caching t)
+
+;;nix
+(starter-kit-install-if-needed 'nix-mode)
 
 ;; Window number mode
 (starter-kit-install-if-needed 'window-number)
