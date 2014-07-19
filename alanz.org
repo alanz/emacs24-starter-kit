@@ -27,6 +27,11 @@ blah
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")
 
+;; god-mode, see http://chrisdone.com/posts/god-mode
+;; https://github.com/chrisdone/god-mode
+(starter-kit-install-if-needed 'god-mode)
+(global-set-key (kbd "<escape>") 'god-mode-all)
+
 ;; yaml
 (starter-kit-install-if-needed 'yaml-mode)
 
@@ -89,6 +94,8 @@ blah
     "~/.cabal/share/HaRe-0.7.2.0/elisp")
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.0/elisp")
+(add-to-list 'load-path
+    "/home/alanz/.cabal.orig/share/HaRe-0.7.1.3/elisp")
 (require 'hare)
 (autoload 'hare-init "hare" nil t)
 
@@ -100,6 +107,7 @@ blah
 
 
 (starter-kit-install-if-needed 'haskell-mode)
+(starter-kit-install-if-needed 'shm) ;; Structured haskell mode
 (starter-kit-install-if-needed 'ghc)
 ;(starter-kit-install-if-needed 'flymake-haskell-multi)
 (autoload 'ghc-init "ghc" nil t)
@@ -117,7 +125,8 @@ blah
   (hare-init)
 
   ;; Use simple indentation.
-  (turn-on-haskell-simple-indent)
+  ;; (turn-on-haskell-simple-indent)
+  ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
   ;; Load the current file (and make a session if not already made).
   ;;(define-key haskell-mode-map [?\C-c ?\C-l] 'haskell-process-load-file)
