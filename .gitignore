@@ -25,7 +25,7 @@ url/*
 
 ## exported and encrypted files
 *gpg
-*el
+./*el
 *elc
 *html
 *tex
@@ -57,3 +57,12 @@ agent/*
 /projectile-bookmarks.eld
 /projectile.cache
 /session.10702d9a76e26212dd139411288697645800000021580041
+/alanz.el
+/custom.el
+/starter-kit-bindings.el
+/starter-kit-defuns.el
+/starter-kit-haskell.el
+/starter-kit-misc.el
+/starter-kit-org.el
+/starter-kit-registers.el
+/starter-kit.el

@@ -81,9 +81,14 @@ blah
 (global-set-key (kbd "M-c") 'rgrep-ghc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Haskell Refactorer
 (add-to-list 'load-path
-    "~/.cabal/share/HaRe-0.7.1.2/elisp")
+    "~/.emacs.d/chrisdone")
+(require 'sunburn)
+(require 'zenburn)
+(zenburn)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Haskell Refactorer
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.1.2/elisp")
 (add-to-list 'load-path
@@ -96,7 +101,6 @@ blah
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.0/elisp")
 (add-to-list 'load-path
     "/home/alanz/.cabal.orig/share/HaRe-0.7.1.3/elisp")
-(require 'hare)
 (autoload 'hare-init "hare" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,7 +110,21 @@ blah
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+
 (starter-kit-install-if-needed 'haskell-mode)
+(starter-kit-install-if-needed 'haskell-process)
+(starter-kit-install-if-needed 'haskell-simple-indent)
+(starter-kit-install-if-needed 'haskell-interactive-mode)
+(starter-kit-install-if-needed 'haskell-font-lock)
+(starter-kit-install-if-needed 'haskell-debug)
+(starter-kit-install-if-needed 'sgml-mode)
+(starter-kit-install-if-needed 'css-mode)
+(starter-kit-install-if-needed 'evil)
+
+
+
+
+;;(starter-kit-install-if-needed 'haskell-mode)
 (starter-kit-install-if-needed 'shm) ;; Structured haskell mode
 (starter-kit-install-if-needed 'ghc)
 ;(starter-kit-install-if-needed 'flymake-haskell-multi)
