@@ -42,6 +42,17 @@ blah
                         'box
                       'bar)))
 
+
+;;(defun c/god-mode-update-cursor ()
+;;  (let ((limited-colors-p (> 257 (length (defined-colors)))))
+;;    (cond (god-local-mode (progn
+;;                            (set-face-background 'mode-line (if limited-colors-p "white" "#e9e2cb"))
+;;                            (set-face-background 'mode-line-inactive (if limited-colors-p "white" "#e9e2cb"))))
+;;          (t (progn
+;;               (set-face-background 'mode-line (if limited-colors-p "black" "#0a2832"))
+;;               (set-face-background 'mode-line-inactive (if limited-colors-p "black" "#0a2832")))))))
+
+
 (add-hook 'god-mode-enabled-hook 'god-update-cursor)
 (add-hook 'god-mode-disabled-hook 'god-update-cursor)
 
@@ -96,11 +107,12 @@ blah
 (global-set-key (kbd "M-c") 'rgrep-ghc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path
-    "~/.emacs.d/chrisdone")
-(require 'sunburn)
-(require 'zenburn)
-(zenburn)
+;(add-to-list 'load-path
+;    "~/.emacs.d/chrisdone")
+;(require 'sunburn)
+;(require 'zenburn)
+;(zenburn)
+;(sunburn)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Refactorer
@@ -115,15 +127,16 @@ blah
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.0/elisp")
 (add-to-list 'load-path
-    "/home/alanz/.cabal.orig/share/HaRe-0.7.1.3/elisp")
+    "~/.cabal.orig/share/HaRe-0.7.1.3/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.6/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.7/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.8/elisp")
 (autoload 'hare-init "hare" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ghc-mod debugging
-(setq ghc-debug t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 
 (starter-kit-install-if-needed 'haskell-mode)
@@ -137,13 +150,15 @@ blah
 (starter-kit-install-if-needed 'evil)
 
 
-
-
 ;;(starter-kit-install-if-needed 'haskell-mode)
 (starter-kit-install-if-needed 'shm) ;; Structured haskell mode
 (starter-kit-install-if-needed 'ghc)
 ;(starter-kit-install-if-needed 'flymake-haskell-multi)
 (autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+
+;; ghc-mod debugging
+(setq ghc-debug t)
 
 (add-hook 'haskell-mode-hook 'run-starter-kit-coding-hook)
 
@@ -169,12 +184,12 @@ blah
   (define-key haskell-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch)
   ;; “Bring” the REPL, hiding all other windows apart from the source
   ;; and the REPL.
-  (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
+  ;;(define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
 
   ;; Build the Cabal project.
-  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  ;;(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   ;; Interactively choose the Cabal command to run.
-  (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
+  ;;(define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
   ;; Get the type and info of the symbol at point, print it in the
   ;; message buffer.
@@ -185,7 +200,7 @@ blah
   ;; Contextually do clever things on the space key, in particular:
   ;;   1. Complete imports, letting you choose the module name.
   ;;   2. Show the type of the symbol after the space.
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+  ;(define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
 
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
@@ -258,7 +273,8 @@ blah
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-off-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
