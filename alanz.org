@@ -56,7 +56,10 @@ blah
 (add-hook 'god-mode-enabled-hook 'god-update-cursor)
 (add-hook 'god-mode-disabled-hook 'god-update-cursor)
 
-
+;; Emacs Code Browser
+(starter-kit-install-if-needed 'ecb)
+(require 'ecb-autoloads)
+(require 'ecb)
 
 ;; yaml
 (starter-kit-install-if-needed 'yaml-mode)
@@ -135,6 +138,14 @@ blah
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.8/elisp")
 (autoload 'hare-init "hare" nil t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; hindent
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.2/elisp")
+(require 'hindent)
+(define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
