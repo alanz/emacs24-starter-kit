@@ -143,7 +143,7 @@ blah
 
 ; hindent
 (add-to-list 'load-path
-    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.2/elisp")
+    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.4/elisp")
 (require 'hindent)
 (define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
 
