@@ -27,6 +27,9 @@ blah
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")
 
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+
 ;; god-mode, see http://chrisdone.com/posts/god-mode
 ;; https://github.com/chrisdone/god-mode
 ;; https://github.com/chrisdone/chrisdone-emacs/blob/master/config/god.el
@@ -144,6 +147,10 @@ blah
 ; hindent
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.4/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.7/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.6.3/hindent-3.7/elisp")
 (require 'hindent)
 (define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
 

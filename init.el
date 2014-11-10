@@ -16,8 +16,8 @@
 (add-hook 'after-init-hook
  `(lambda ()
     ;; remember this directory
-    (setq starter-kit-dir
-          ,(file-name-directory (or load-file-name (buffer-file-name))))
+    (setq starter-kit-dir "/home/alanz/.emacs.d/starter-kit/")
+    ;;      ,(file-name-directory (or load-file-name (buffer-file-name))))
     ;; only load org-mode later if we didn't load it just now
     ,(unless (and (getenv "ORG_HOME")
                   (file-directory-p (expand-file-name "lisp"
