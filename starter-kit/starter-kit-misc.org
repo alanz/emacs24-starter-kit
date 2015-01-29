@@ -12,6 +12,7 @@ Determine whether required packages are installed. If not, use ELPA to
 install them. Other dependencies are provided by Emacs 24.
 #+begin_src emacs-lisp
   (starter-kit-install-if-needed 'magit)
+  (starter-kit-install-if-needed 'git-rebase-mode)
 #+end_src
 
 ** Color Themes

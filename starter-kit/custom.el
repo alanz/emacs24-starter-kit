@@ -8,7 +8,19 @@
  '(ecb-options-version "2.40")
  '(haskell-program-name "ghci")
  '(hindent-style "johan-tibell")
- '(safe-local-variable-values (quote ((hindent-style . "chris-done") (ghc-session-startup lambda nil (ghc/set "-hide-package ghc-server") (ghc/set "-package ghc") (ghc/set "-isrc")) (whitespace-line-column . 80) (lexical-binding . t))))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
+ '(safe-local-variable-values
+   (quote
+    ((buffer-file-coding-system . utf-8-unix)
+     (hindent-style . "chris-done")
+     (ghc-session-startup lambda nil
+                          (ghc/set "-hide-package ghc-server")
+                          (ghc/set "-package ghc")
+                          (ghc/set "-isrc"))
+     (whitespace-line-column . 80)
+     (lexical-binding . t))))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

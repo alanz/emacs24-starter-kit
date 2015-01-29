@@ -27,8 +27,13 @@ blah
 (starter-kit-install-if-needed 'org)
 (starter-kit-load "org")
 
+(starter-kit-install-if-needed 'org-plus-contrib)
+;;(starter-kit-install-if-needed 'org-drill)
+
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+; (global-set-key "\C-cb" 'org-iswitchb)
 
 ;; god-mode, see http://chrisdone.com/posts/god-mode
 ;; https://github.com/chrisdone/god-mode
@@ -140,19 +145,27 @@ blah
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.7/elisp")
 (add-to-list 'load-path
     "~/.cabal/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.8/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.10.0.20150106/HaRe-0.8.0.0/elisp")
+(add-to-list 'load-path
+    "~/.cabal/share/x86_64-linux-ghc-7.11.20150116/HaRe-0.8.0.0/elisp")
+(add-to-list 'load-path
+    "~/.ghc-config/cabal/7.6.3/share/x86_64-linux-ghc-7.6.3/HaRe-0.7.2.8/elisp")
 (autoload 'hare-init "hare" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; hindent
-(add-to-list 'load-path
-    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.4/elisp")
-(add-to-list 'load-path
-    "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.7/elisp")
-(add-to-list 'load-path
-    "~/.cabal/share/x86_64-linux-ghc-7.6.3/hindent-3.7/elisp")
-(require 'hindent)
-(define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
+;; (add-to-list 'load-path
+;;     "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.4/elisp")
+;; (add-to-list 'load-path
+;;     "~/.cabal/share/x86_64-linux-ghc-7.8.3/hindent-3.7/elisp")
+;; (add-to-list 'load-path
+;;     "~/.cabal/share/x86_64-linux-ghc-7.6.3/hindent-3.7/elisp")
+;; (add-to-list 'load-path
+;;     "~/.cabal/share/x86_64-linux-ghc-7.10.0.20150106/hindent-4.1.0/elisp")
+;; (require 'hindent)
+;; (define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -167,6 +180,15 @@ blah
 (starter-kit-install-if-needed 'css-mode)
 (starter-kit-install-if-needed 'evil)
 
+;; Company mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(starter-kit-install-if-needed 'company)
+(starter-kit-install-if-needed 'company-ghc)
+
+(require 'company)
+(add-hook 'haskell-mode-hook 'company-mode)
+(add-to-list 'company-backends 'company-ghc)
+(custom-set-variables '(company-ghc-show-info t))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;(starter-kit-install-if-needed 'haskell-mode)
 (starter-kit-install-if-needed 'shm) ;; Structured haskell mode
@@ -191,8 +213,11 @@ blah
   (hare-init)
 
   ;; Use simple indentation.
-  ;; (turn-on-haskell-simple-indent)
+  ;(turn-on-haskell-simple-indent)
+  (turn-on-haskell-indentation)
   ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+
+  (inf-haskell-mode)
 
   ;; Load the current file (and make a session if not already made).
   ;;(define-key haskell-mode-map [?\C-c ?\C-l] 'haskell-process-load-file)
@@ -280,6 +305,10 @@ blah
       save-place-file "~/.emacs.d/places"
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
       diff-switches "-u")
+
+(setq-default show-trailing-whitespace t)
+(setq-default indicate-empty-lines t)
+(global-set-key (kbd "<f11>") 'global-linum-mode)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
